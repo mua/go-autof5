@@ -27,7 +27,7 @@ import (
 
 func main() {    
    http.HandleFunc("/", autof5.Livereload(func(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, "<html><head><title>AutoF5</title></head><body><h1>AutoF5</h1></body></html>")
+        fmt.Fprintf(w, "<html><body><h1>AutoF5</h1></body></html>")
     }))
     http.ListenAndServe(":8080", nil)
 }
