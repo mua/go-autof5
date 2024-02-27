@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestLivereload(t *testing.T) {
+func TestAutoF5(t *testing.T) {
 	respBody := "<html><body>Hello, World!</body></html>"
 	// Create a mock HTTP handler for testing
 	mockHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -21,17 +21,17 @@ func TestLivereload(t *testing.T) {
 	// Create a mock HTTP response recorder
 	rec := httptest.NewRecorder()
 
-	// Call the Livereload function with the mock handler and delay
-	livereloadHandler := Livereload(mockHandler)
+	// Call the AutoF5 function with the mock handler and delay
+	AutoF5Handler := AutoF5(mockHandler)
 
-	// Serve the request using the livereload handler
-	livereloadHandler.ServeHTTP(rec, req)
+	// Serve the request using the AutoF5 handler
+	AutoF5Handler.ServeHTTP(rec, req)
 
-	// Check if the response body contains the livereload script
+	// Check if the response body contains the AutoF5 script
 	expectedBody := "fetch(\"/_autoF5_wait\", { mode: 'no-cors' }"
 
 	if !strings.Contains(rec.Body.String(), expectedBody) {
-		t.Errorf("Livereload script not found in response body")
+		t.Errorf("AutoF5 script not found in response body")
 	}
 
 	// Check if the response code is 200 OK

@@ -49,7 +49,7 @@ func (r *responseRecorder) Flush() {
 	_, _ = r.w.Write([]byte(r.body))
 }
 
-func Livereload(next http.HandlerFunc) http.HandlerFunc {
+func AutoF5(next http.HandlerFunc) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path == "/_autoF5_wait" {
 			<-r.Context().Done()
